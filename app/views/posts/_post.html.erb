@@ -1,0 +1,13 @@
+<div class="card rounded-0 mt-3">
+    <div class="card-body shadow rounded">
+        <h5 class="card-title"><%= post.title %></h5>
+        <h6>Posted by: <%= link_to post.user.name, user_path(post.user) %> </h6>
+        <h6><%= pluralize(post.views, "view") %></h6>
+        <p class="card-text"><%= post.content %></p>
+        <% unless @show_post %>
+            <p>
+                <%= link_to "Show this post", post %>
+            </p>
+        <% end %>    
+    </div>
+</div>

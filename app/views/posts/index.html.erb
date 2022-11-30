@@ -1,0 +1,13 @@
+<p style="color: green"><%= notice %></p>
+
+
+<div class="container mt-5">
+  <h1 class="head d-inline">Posts</h1>
+  <%= link_to "New post", new_post_path, class: "btn btn-primary", style: "float: right" %>
+
+  <div id="posts">
+    <% @posts.each do |post| %>
+      <%= render post %>
+    <% end %>
+  </div>
+</div>
