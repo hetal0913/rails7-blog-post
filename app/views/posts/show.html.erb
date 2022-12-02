@@ -8,7 +8,7 @@
 </div>
 
 <div class="contianer mt-3">
-  <%= render 'comments/form' , post: @post, comment: @post.comments.build %>
+  <%= render 'comments/form' , post: @post, comment: @post.comments.build, submit_label: "Reply" %>
   <% @comments.each do |comment| %>
     <%= render 'comments/comment', post: @post, comment: comment %>
   <% end %> 
