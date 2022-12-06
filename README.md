@@ -22,3 +22,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+* Demo covers:
+    - Devise for authentication
+    - action-text for rich text area comments
+    - noticed for manage notifications

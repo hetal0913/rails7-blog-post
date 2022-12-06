@@ -9,10 +9,10 @@ class PostsController < ApplicationController
   
     # GET /posts/1 or /posts/1.json
     def show
-      puts "::::::::#{@post}"
       @show_post = true
       @post.update(views: @post.views + 1)
       @comments = @post.comments.order(created_at: :desc)
+      mark_notification_as_read
     end
   
     # GET /posts/new
@@ -72,6 +72,13 @@ class PostsController < ApplicationController
       # Only allow a list of trusted parameters through.
       def post_params
         params.require(:post).permit(:title, :content)
+      end
+
+      def mark_notification_as_read
+        if current_user
+          all_notifications = @post.notifications_as_post.where(recipient: current_user)
+          all_notifications.update_all(read_at: Time.zone.now)
+        end
       end
   end
   
