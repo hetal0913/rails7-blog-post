@@ -4,14 +4,15 @@ class PostsController < ApplicationController
   
     # GET /posts or /posts.json
     def index
-      @posts = Post.all.order(created_at: :desc)
+      @posts = Post.includes(:user).all.order(created_at: :desc)
     end
   
     # GET /posts/1 or /posts/1.json
     def show
       @show_post = true
+
       @post.update(views: @post.views + 1)
-      @comments = @post.comments.order(created_at: :desc)
+      @comments = @post.comments.includes(:user, :rich_text_body).order(created_at: :desc)
       mark_notification_as_read
     end
   
@@ -30,7 +31,7 @@ class PostsController < ApplicationController
       @post.user = current_user
   
       respond_to do |format|
-        if @post.save
+*/        if @post.save
           format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
           format.json { render :show, status: :created, location: @post }
         else
