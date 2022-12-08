@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   
     # GET /posts or /posts.json
     def index
-      @posts = Post.includes(:user).all.order(created_at: :desc)
+      @posts = Post.includes(:user).all.order(position: :asc)
     end
   
     # GET /posts/1 or /posts/1.json
@@ -31,7 +31,7 @@ class PostsController < ApplicationController
       @post.user = current_user
   
       respond_to do |format|
-*/        if @post.save
+        if @post.save
           format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
           format.json { render :show, status: :created, location: @post }
         else

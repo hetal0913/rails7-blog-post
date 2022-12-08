@@ -7,7 +7,7 @@
 
   <div id="posts">
     <% @posts.each do |post| %>
-      <%= render post %>
+      <%= render "draggable", post: post %>
     <% end %>
   </div>
 </div>

@@ -76,3 +76,5 @@ gem 'devise'
 gem "noticed", "~> 1.6"
 
 gem "ransack", "~> 3.2"
+
+gem "acts_as_list", "~> 1.0"
